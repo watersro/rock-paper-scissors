@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ROCK PAPER SCISSSORS!</title>
+    </head>
+    <body>
+        <script>
+            const playerSelection = chooseMove();
+            const computerSelection = computerPlay();
+
+            let playerScore = 0;
+            let computerScore = 0;
+            let score = `Your score is: ${playerScore} \n The Computer's score is: ${computerScore}`
+
+            function chooseMove() {
+                let choice = prompt("Rock, Paper, or Scissors?")
+			    let lowerStr = choice.toLowerCase();
+                switch (true) {
+                    case (lowerStr == String("rock")):
+                        return lowerStr;
+                        break;
+                    case (lowerStr == String("paper")):
+                        return lowerStr;
+                        break;
+                    case (lowerStr == String("scissors")):
+                        return lowerStr;
+                        break;
+                    default:
+                        alert("Hmm, I don't know that one, choose again please")
+                        chooseMove();
+                }                
+            }
+            console.log(computerSelection)
+            function choseRock() {
+                if (computerSelection == "rock") {
+                    alert("You both chose Rock, I declare a draw!")
+                } else if (computerSelection == "scissors") {
+                    alert("You chose Rock and the Computer chose Scissors - you win this round!")
+                    playerScore = playerScore + 1
+                    return playerScore
+                } else if (computerSelection == "paper") {
+                    alert("You chose Rock and the Computer chose paper - you lose this round!")
+                    computerScore = computerScore + 1
+                    return
+                }
+            }
+            
+            
+            function chosePaper() {
+                if (computerSelection == "paper") {
+                    alert("You both chose Paper, I declare a draw!")
+                } else if (computerSelection == "scissors") {
+                    alert("You chose Paper and the Computer chose Scissors - you lose this round!")
+                    computerScore++
+                } else if (computerSelection == "rock") {
+                    alert("You chose Paper and the Computer chose Rock - you win this round!")
+                    playerScore++
+                }
+            }
+            
+            function choseScissors() {
+                if (computerSelection == "scissors") {
+                    alert("You both chose Scissors, I declare a draw!")
+                } else if (computerSelection == "rock") {
+                    alert("You chose Scissors and the Computer chose Rock - you lose this round!")
+                    computerScore++
+                } else if (computerSelection == "paper") {
+                    alert("You chose Scissors and the Computer chose Paper - you win this round!")
+                    playerScore++
+                }
+            }
+            
+            function computerPlay() {
+                let randDecision = Math.floor(Math.random() * 3)
+                return (randDecision == 0) ? "rock" 
+                : (randDecision == 1) ? "paper" 
+                : "scissors";
+            }
+
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection == String`rock`) {
+                    choseRock()
+                } else if (playerSelection == String`paper`) {
+                    chosePaper()
+                } else if (playerSelection == String`scissors`) {
+                    choseScissors() 
+                }
+                console.log(score)
+            }
+
+            // function game() {
+            //     if (computerScore > 5 || playerScore > 5) {
+            //         playRound(playerSelection, computerSelection)
+            //     } else if (computerScore == 5) {
+            //         alert("The Computer has bested you!")
+            //     } else if (playerScore > 5) {
+            //         alert("You won the game!")
+            //     }  
+            // }
+            // game();
+            playRound(playerSelection,computerSelection);
+        </script>
+    </body>
+</html>

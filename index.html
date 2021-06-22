@@ -5,12 +5,10 @@
     </head>
     <body>
         <script>
-            const playerSelection = chooseMove();
-            const computerSelection = computerPlay();
-
-            let playerScore = 0;
-            let computerScore = 0;
-            let score = `Your score is: ${playerScore} \n The Computer's score is: ${computerScore}`
+            let computerSelection = computerPlay();
+            let wins = 0;
+            let losses = 0;
+           
 
             function chooseMove() {
                 let choice = prompt("Rock, Paper, or Scissors?")
@@ -30,50 +28,52 @@
                         chooseMove();
                 }                
             }
-            console.log(computerSelection)
+            
             function choseRock() {
+                let computerSelection = computerPlay()
                 if (computerSelection == "rock") {
                     alert("You both chose Rock, I declare a draw!")
                 } else if (computerSelection == "scissors") {
                     alert("You chose Rock and the Computer chose Scissors - you win this round!")
-                    playerScore = playerScore + 1
-                    return playerScore
+                    wins++
                 } else if (computerSelection == "paper") {
                     alert("You chose Rock and the Computer chose paper - you lose this round!")
-                    computerScore = computerScore + 1
-                    return
+                    losses++
                 }
             }
             
             
             function chosePaper() {
+                let computerSelection = computerPlay()
                 if (computerSelection == "paper") {
                     alert("You both chose Paper, I declare a draw!")
                 } else if (computerSelection == "scissors") {
                     alert("You chose Paper and the Computer chose Scissors - you lose this round!")
-                    computerScore++
+                    losses++
                 } else if (computerSelection == "rock") {
                     alert("You chose Paper and the Computer chose Rock - you win this round!")
-                    playerScore++
+                    wins++
                 }
             }
             
             function choseScissors() {
+                let computerSelection = computerPlay()
                 if (computerSelection == "scissors") {
+                // if (computerSelection == "scissors") {
                     alert("You both chose Scissors, I declare a draw!")
                 } else if (computerSelection == "rock") {
                     alert("You chose Scissors and the Computer chose Rock - you lose this round!")
-                    computerScore++
+                    losses++
                 } else if (computerSelection == "paper") {
                     alert("You chose Scissors and the Computer chose Paper - you win this round!")
-                    playerScore++
+                    wins++
                 }
             }
             
             function computerPlay() {
-                let randDecision = Math.floor(Math.random() * 3)
-                return (randDecision == 0) ? "rock" 
-                : (randDecision == 1) ? "paper" 
+                let randChoice = Math.floor(Math.random() * 3)
+                return (randChoice == 0) ? "rock" 
+                : (randChoice == 1) ? "paper" 
                 : "scissors";
             }
 
@@ -85,20 +85,24 @@
                 } else if (playerSelection == String`scissors`) {
                     choseScissors() 
                 }
-                console.log(score)
             }
 
-            // function game() {
-            //     if (computerScore > 5 || playerScore > 5) {
-            //         playRound(playerSelection, computerSelection)
-            //     } else if (computerScore == 5) {
-            //         alert("The Computer has bested you!")
-            //     } else if (playerScore > 5) {
-            //         alert("You won the game!")
-            //     }  
-            // }
-            // game();
-            playRound(playerSelection,computerSelection);
+            function game() {
+                let rounds = 0
+                while (wins < 5 && losses < 5) {
+                    let playerSelection = chooseMove()
+                    playRound(playerSelection, computerSelection)
+                    rounds++
+                    alert(`You have played ${rounds} round so far. \nWins: ${wins} \nLosses: ${losses} \nDraws: ${rounds - (wins + losses)}`) 
+                }
+                if (wins == 5) {
+                    alert("You won the game")
+                } else if (losses == 5) { 
+                    alert("You lost the game")
+                }
+            }
+            game();
+            // playRound(playerSelection,computerSelection);
         </script>
     </body>
 </html>

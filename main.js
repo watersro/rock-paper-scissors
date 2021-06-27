@@ -1,28 +1,18 @@
 const main = document.querySelector("main");
-const scoreContainer = document.querySelector("#score-container")
+const scoreContainer = document.querySelector("#score-container");
 const playerScore = document.querySelector("#player-score");
 playerScore.style.cssText = "color: blue";
 const  computerScore = document.querySelector("#computer-score");
 computerScore.style.cssText = "color: red";
-const gameReport = document.querySelector("#game-report")
-const currentRound = document.querySelector("#current-round")
-const roundContainer = document.querySelector("#rounds-container")
+const gameReport = document.querySelector("#game-report");
+const currentRound = document.querySelector("#current-round");
+const roundContainer = document.querySelector("#rounds-container");
 
 
 let computerSelection = computerPlay();
 let wins = 0;
 let losses = 0;
 let rounds = 1;
-// function chooseMove(plChoice) {
-//     plChoice = choice;
-//     if (choice === "rock") {
-//         return choice;
-//     } else if (choice === "paper") {
-//         return choice;
-//     } else if (choice === "scissors") {
-//         return choice;
-//     }
-// };
 
 function choseRock() {
     let computerSelection = computerPlay();
@@ -117,7 +107,5 @@ buttons.forEach((button) => {
 	button.addEventListener("click", () => {
         let playerSelection = button.id.toString();
         game(playerSelection)
-		// game(playerSelection);
-
 	});
 });

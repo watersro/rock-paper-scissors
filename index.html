@@ -1,108 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ROCK PAPER SCISSSORS!</title>
+        <title>ROCK PAPER SCISSORS!</title>
     </head>
     <body>
-        <script>
-            let computerSelection = computerPlay();
-            let wins = 0;
-            let losses = 0;
-           
+        <main>
+            <h1><u>Play Rock Paper Scissors against a simple bot!</u></h1>
+            <aside>
+                <h3>Rules</h3>
+            <p>Pick from either Rock, Paper or Scissors and try to out wit the computer!<br>
+            Matchups:</p>
+            <ul>
+                <li>Rock beats Scissors</li>
+                <li>Scissors beats Paper</li>
+                <li>Paper beats Scissors</li>
+            </ul>
+            <p>You have 5 rounds, whoever has the highest score at the end wins!</p>
+            </aside>
+            <div id="score-container">
+                <p><strong>YOUR SCORE:</strong></p>
+                <div id="player-score">
+                    0
+                </div>
+                <p><strong>ENEMY SCORE:</strong></p>
+                <div id="computer-score">
+                    0
+                </div>
+            </div>
+            <div id="rounds-container">
+                <em>Current Round:</em> 
+                <span id="current-round">1</span>
+            </div>
+            <div id="game-report">
 
-            function chooseMove() {
-                let choice = prompt("Rock, Paper, or Scissors?")
-			    let lowerStr = choice.toLowerCase();
-                switch (true) {
-                    case (lowerStr == String("rock")):
-                        return lowerStr;
-                        break;
-                    case (lowerStr == String("paper")):
-                        return lowerStr;
-                        break;
-                    case (lowerStr == String("scissors")):
-                        return lowerStr;
-                        break;
-                    default:
-                        alert("Hmm, I don't know that one, choose again please")
-                        chooseMove();
-                }                
-            }
-            
-            function choseRock() {
-                let computerSelection = computerPlay()
-                if (computerSelection == "rock") {
-                    alert("You both chose Rock, I declare a draw!")
-                } else if (computerSelection == "scissors") {
-                    alert("You chose Rock and the Computer chose Scissors - you win this round!")
-                    wins++
-                } else if (computerSelection == "paper") {
-                    alert("You chose Rock and the Computer chose paper - you lose this round!")
-                    losses++
-                }
-            }
-            
-            
-            function chosePaper() {
-                let computerSelection = computerPlay()
-                if (computerSelection == "paper") {
-                    alert("You both chose Paper, I declare a draw!")
-                } else if (computerSelection == "scissors") {
-                    alert("You chose Paper and the Computer chose Scissors - you lose this round!")
-                    losses++
-                } else if (computerSelection == "rock") {
-                    alert("You chose Paper and the Computer chose Rock - you win this round!")
-                    wins++
-                }
-            }
-            
-            function choseScissors() {
-                let computerSelection = computerPlay()
-                if (computerSelection == "scissors") {
-                // if (computerSelection == "scissors") {
-                    alert("You both chose Scissors, I declare a draw!")
-                } else if (computerSelection == "rock") {
-                    alert("You chose Scissors and the Computer chose Rock - you lose this round!")
-                    losses++
-                } else if (computerSelection == "paper") {
-                    alert("You chose Scissors and the Computer chose Paper - you win this round!")
-                    wins++
-                }
-            }
-            
-            function computerPlay() {
-                let randChoice = Math.floor(Math.random() * 3)
-                return (randChoice == 0) ? "rock" 
-                : (randChoice == 1) ? "paper" 
-                : "scissors";
-            }
-
-            function playRound(playerSelection, computerSelection) {
-                if (playerSelection == String`rock`) {
-                    choseRock()
-                } else if (playerSelection == String`paper`) {
-                    chosePaper()
-                } else if (playerSelection == String`scissors`) {
-                    choseScissors() 
-                }
-            }
-
-            function game() {
-                let rounds = 0
-                while (wins < 5 && losses < 5) {
-                    let playerSelection = chooseMove()
-                    playRound(playerSelection, computerSelection)
-                    rounds++
-                    alert(`You have played ${rounds} round so far. \nWins: ${wins} \nLosses: ${losses} \nDraws: ${rounds - (wins + losses)}`) 
-                }
-                if (wins == 5) {
-                    alert("You won the game")
-                } else if (losses == 5) { 
-                    alert("You lost the game")
-                }
-            }
-            game();
-            // playRound(playerSelection,computerSelection);
-        </script>
+            </div>
+            <div id="choose-move">
+                <button id="rock">ROCK</button>
+                <button id="paper">PAPER</button>
+                <button id="scissors">SCISSORS</button>
+            </div>
+        </main>
     </body>
+    <script src="main.js"></script>
 </html>
